@@ -22,6 +22,4 @@
         (pytorch) jg@JG:~$ python -m spacy download de_core_news_sm
         ```
 >## ***Author*** 
-
 * medical18@naver.com / JONGGON
-# Pytorch-Transformer
