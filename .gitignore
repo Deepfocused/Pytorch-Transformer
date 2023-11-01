@@ -1,0 +1,4 @@
+*.jit
+.idea
+.data
+weights

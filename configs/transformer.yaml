@@ -1,0 +1,36 @@
+model:
+  # model 관련
+  d_model: 128 # 논문 : 512
+  nhead: 8 # 논문과 같음
+  num_encoder_layers: 2 # 논문 : 6
+  num_decoder_layers: 2 # 논문 : 6
+  dim_feedforward: 512 # 논문 : 1024
+  dropout: 0.1 # 논문과 같음
+
+  training: True
+  save_period: 21
+  load_period: 210
+
+hyperparameters:
+  # 학습 관련
+  epoch: 210
+  batch_size: 64
+  batch_log: 210
+  subdivision: 1
+  pin_memory: True
+  # num_workers 사용하지말자 torch.utils.data.IterableDataset 로 되어있어서, 사용하려면 다른 작업을 해야한다.
+  # https://pytorch.org/docs/stable/data.html#dataset-types 를 나중에 자세히 읽어보자
+  num_workers: 8 # 실제 코드상에서는 0 고정해놓음
+  optimizer: ADAM # ADAM, RMSPROP
+  learning_rate: 0.001
+  weight_decay: 0.000001
+  decay_lr: 0.99
+  decay_step: 10 # 몇 epoch이 지난후 decay_lr을 적용할지
+context:
+  using_cuda: True
+validation:
+  eval_period: 21
+
+
+
+
