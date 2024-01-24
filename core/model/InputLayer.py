@@ -109,7 +109,7 @@ def encoder_mask(x, padding_index = 0):
     '''
     x shape : (batch, sequence_length)
     '''
-    assert len(x.shape) <= 2
+    assert len(x.size()) == 2 # (batch, sequence_length)와 같은 형태여야 함
     return ((x == padding_index) == False)[:, None, None, :].to(x.dtype) # type_as(x)는 torchscript파일로 추출하지 않는 경우 필요없다.
 
 def decoder_mask(x, padding_index = 0):
@@ -117,7 +117,7 @@ def decoder_mask(x, padding_index = 0):
     encoder_mask도 포함한다.
     x shape : (batch, sequence_length)
     '''
-    assert len(x.shape) <= 2
+    assert len(x.size()) == 2 # (batch, sequence_length)와 같은 형태여야 함
     sequence_length = x.shape[-1]
     e_mask = encoder_mask(x, padding_index=padding_index)
     d_mask = (torch.triu(torch.ones(1, 1, sequence_length, sequence_length), diagonal=1) == 0).type_as(e_mask)
