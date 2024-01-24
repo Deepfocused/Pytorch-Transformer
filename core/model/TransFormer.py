@@ -132,11 +132,11 @@ class Transformer(nn.Module):
 if __name__ == "__main__":
 
     # 브로드 캐스팅을 잘 사용해야한다.
-    src_vocab = 2100
-    tgt_vocab = 2100
-    src_sequence_size = 21
-    target_sequence_size = 1
-    device = torch.device("cuda:0")
+    src_vocab = 5000
+    tgt_vocab = 4999
+    src_sequence_size = 30
+    target_sequence_size = 29
+    device = torch.device("cpu")
     net = Transformer(src_vocab=src_vocab, tgt_vocab=tgt_vocab, d_model=512, nhead=8, num_encoder_layers=6, num_decoder_layers=6,
                       dim_feedforward=2048, dropout=0.1)
     # weight 초기화 - 이렇게 초기화 하는 것이 편하다.
@@ -182,5 +182,5 @@ if __name__ == "__main__":
 
     print(f"< output shape : {output.shape} >")
     '''
-    < output shape : torch.Size([1, 50, 50]) >
+    < output shape : torch.Size([3, 29, 4999]) >
     '''
