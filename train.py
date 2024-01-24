@@ -222,8 +222,8 @@ def run(epoch=100,
                     src_split,
                     tgt_split):
 
-                tgt_part_input = tgt[:, :-1]
-                tgt_part_out = tgt[:, 1:]
+                tgt_part_input = tgt_part[:, :-1]
+                tgt_part_out = tgt_part[:, 1:]
 
                 src_mask = encoder_mask(src_part_input, padding_index = train_dataset.PAD_IDX)
                 tgt_mask = decoder_mask(tgt_part_input, padding_index = train_dataset.PAD_IDX)
